@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "announcement-service"
+version = "0.1.0"
+description = ""
+authors = ["Philip Jansen van Vuuren"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+fastapi = "^0.110.0"
+uvicorn = "^0.27.1"
+pydantic = "^2.6.2"
+boto3 = "^1.19.0"
+requests = "^2.26.0"
+black = "^24.2.0"
+moto = "^4.2.10"
+pynamodb = "^6.0.0"
+pydantic-settings = "^2.2.1"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0.2"
+pytest-env = "^1.1.3"
+responses = "^0.25.0"
+httpx = "^0.27.0"
+freezegun = "^1.4.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.2"
+
+
+[tool.poetry.group.lint.dependencies]
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ["py312"]
+line-length = 120
+include = '\.py$'
+exclude = '''
+/(
+  \.git
+  | venv
+  | env
+  | \.mypy_cache
+  | _build
+  | build
+)/
+
+'''
+[tool.pytest.ini_options]
+pythonpath = ["app"]
+testpaths = ["tests"]
